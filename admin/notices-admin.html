@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Notices Admin</title><link rel='stylesheet' href='../assets/css/style.css'></head><body>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:linear-gradient(90deg,var(--green),var(--orange));color:#081014"><div><strong>Admin</strong></div><div><button onclick="logoutAdmin()" style="background:#fff;padding:6px;border-radius:6px">Logout</button></div></div>
+<div style="display:flex"><aside style="width:240px;padding:18px;background:#07131a;color:rgba(255,255,255,0.9)"><ul style="list-style:none;padding:0"><li><a href="dashboard.html">Dashboard</a></li><li><a href="notices-admin.html"><strong>Notices</strong></a></li></ul></aside>
+<main style="flex:1;padding:18px"><h2>Notices</h2><div style="margin-top:8px"><button onclick="openAddNotice()">+ Add Notice</button></div><table class="table" id="noticesTable" style="margin-top:12px"><thead><tr><th>Title</th><th>Message</th><th>Date</th><th>Actions</th></tr></thead><tbody></tbody></table></main></div>
+<div id="modal" class="modal"><div class="modal-card" id="modalCard"></div></div>
+<script src="../assets/js/admin.js"></script>
+<script>
+function openAddNotice(){ document.getElementById('modalCard').innerHTML = `<h3>Add Notice</h3><div style="margin-top:8px"><input id="n_title" placeholder="Title" style="width:100%;padding:8px;border-radius:6px"><textarea id="n_msg" placeholder="Message" style="width:100%;margin-top:8px;padding:8px;border-radius:6px"></textarea></div><div style="text-align:right;margin-top:8px"><button onclick="saveNoticeModal()">Save</button></div>`; document.getElementById('modal').classList.add('open'); }
+function saveNoticeModal(){ const title=document.getElementById('n_title').value.trim(); const msg=document.getElementById('n_msg').value.trim(); if(!title||!msg){ alert('Fill'); return;} window.addNoticeAdmin({title,msg}); document.getElementById('modal').classList.remove('open'); }
+document.addEventListener('DOMContentLoaded', ()=>{ adminInit(); renderNoticesAdmin(); renderDashboardStats(); });
+</script>
+</body></html>

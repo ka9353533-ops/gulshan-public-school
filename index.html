@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gulshan Public School — Premium Neon Edition</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<style>
+/* ---------------------- CORE THEME --------------------- */
+:root {
+  --orange: #ff6a00;
+  --green: #2dff0b;
+  --white: #ffffff;
+  --bg: #000;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/* ---------------------- HEADER ------------------------- */
+.header {
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.55);
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: 800;
+  box-shadow: 0 0 20px var(--orange);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-links a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--green);
+  text-shadow: 0 0 15px var(--green);
+}
+
+.cta {
+  background: var(--orange);
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  box-shadow: 0 0 15px var(--orange);
+}
+
+/* ---------------------- HERO SECTION ---------------------- */
+.hero {
+  padding: 120px 0;
+  background: radial-gradient(circle at top, rgba(255,102,0,0.25), transparent 60%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 50px;
+}
+
+.tag {
+  background: rgba(255,255,255,0.1);
+  padding: 6px 14px;
+  display: inline-block;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.hero-left h1 {
+  font-size: 44px;
+}
+
+.hero-left span {
+  color: var(--green);
+  text-shadow: 0 0 15px var(--green);
+}
+
+.btn {
+  padding: 10px 22px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 0;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: white;
+  box-shadow: 0 0 20px var(--orange);
+}
+
+.btn-ghost {
+  border: 1px solid var(--green);
+  background: transparent;
+  margin-left: 8px;
+  color: var(--white);
+}
+
+.hero-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255,102,0,0.3);
+}
+
+/* COUNTERS */
+.counter-num {
+  font-size: 28px;
+  text-shadow: 0 0 15px currentColor;
+}
+
+/* ------------------- SECTIONS -------------------- */
+.section-title h2 {
+  font-size: 32px;
+  text-shadow: 0 0 15px var(--green);
+}
+
+.cards {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+}
+
+.card {
+  padding: 22px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 20px rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px var(--orange);
+}
+
+/* NOTICE */
+.notice-box {
+  background: rgba(255,255,255,0.05);
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.marquee {
+  height: 28px;
+  overflow: hidden;
+}
+
+/* GALLERY */
+.gallery-grid {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 18px var(--green);
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+}
+
+/* MODAL */
+.modal {
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  backdrop-filter: blur(4px);
+  background: rgba(0,0,0,0.75);
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
+
+.modal-card {
+  background: rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:15px;
+  width:90%;
+  max-width:450px;
+  border:1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+}
+
+.input {
+  padding:10px;
+  width:100%;
+  background:rgba(255,255,255,0.07);
+  border:0;
+  color:white;
+  border-radius:6px;
+}
+
+.footer {
+  padding:25px 0;
+  opacity:0.8;
+  text-align:center;
+  margin-top:50px;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container nav-inner">
+    <div style="display:flex;gap:12px;align-items:center">
+      <div class="logo">
+        <img src="assets/img/school_logo.jpg" alt="Gulshan Public School Logo">
+      </div>
+      <div>
+        <h1 style="margin:0;font-size:22px">Gulshan Public School</h1>
+        <div style="font-size:12px;color:rgba(255,255,255,0.6)">Deoband, Uttar Pradesh</div>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="notices.html">Notices</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact</a>
+      <a class="cta" href="admin/login.html">Admin</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-grid container">
+    <div class="hero-left">
+      <div class="tag">SINCE 1998 — Excellence in Education</div>
+      <h1>Gulshan Public School — <span id="typedTxt"></span></h1>
+      <p class="lead">हमारा लक्ष्य — हर छात्र को आत्मनिर्भर बनाना। आधुनिक शिक्षा और सांस्कृतिक मूल्य एक साथ।</p>
+      <button class="btn btn-primary" id="openAdmissionBtn">Apply Now</button>
+      <a href="about.html" class="btn btn-ghost">Learn More</a>
+    </div>
+    <div class="hero-card">
+      <img src="assets/img/hero.jpg" style="width:100%;border-radius:10px">
+      <div style="display:flex;justify-content:space-between;margin-top:12px">
+        <div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6)">Students</div>
+          <div data-target="1280" class="counter-num" style="color:var(--green)"></div>
+        </div>
+        <div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6)">Teachers</div>
+          <div data-target="52" class="counter-num" style="color:var(--orange)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="container">
+  <div class="section-title">
+    <h2>Why Choose Us</h2>
+    <div class="section-sub">Quality Education • Discipline • Activities</div>
+  </div>
+  <div class="cards">
+    <div class="card">Digital Smart Classes</div>
+    <div class="card">Experienced Teachers</div>
+    <div class="card">Sports & Cultural Events</div>
+    <div class="card">Modern Computer Lab</div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="container">
+  <div class="section-title">
+    <h2>Gallery</h2>
+    <div class="section-sub">Campus • Events • Students</div>
+  </div>
+  <div id="galleryGrid" class="gallery-grid"></div>
+</section>
+
+<!-- Testimonials -->
+<section class="container">
+  <div class="section-title">
+    <h2>Testimonials</h2>
+    <div class="section-sub">Parents & Students Speak</div>
+  </div>
+  <div class="testimonials">
+    <div class="card">“Modern education with great teachers.” — Asha</div>
+    <div class="card">“Safe campus and excellent management.” — Mr. Sharma</div>
+    <div class="card">“Best school for activities.” — Parent</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  © Gulshan Public School — Deoband | Contact: +91 98765 43210 | info@gulshanpublicschool.in
+</footer>
+
+<!-- Admission Modal -->
+<div id="modalAdmission" class="modal">
+  <div class="modal-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <h3>Online Admission</h3>
+      <button id="closeModal" style="background:transparent;border:0;color:var(--white);font-size:20px">✕</button>
+    </div>
+    <form id="admissionForm">
+      <input class="input" name="studentName" placeholder="Student Name" required>
+      <input class="input" name="dob" type="date" required>
+      <input class="input" name="father" placeholder="Father's Name" required>
+      <input class="input" name="mother" placeholder="Mother's Name" required>
+      <select name="class" class="input" required>
+        <option value="">Select Class</option>
+        <option>1</option><option>2</option><option>3</option>
+      </select>
+      <textarea name="address" class="input" placeholder="Address"></textarea>
+      <button class="btn btn-primary" type="submit" style="width:100%;margin-top:10px">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+/* TYPED EFFECT */
+const textArr = ["Best Education", "Discipline", "Smart Classes", "Future Leaders"];
+let i=0, index=0;
+setInterval(()=>{
+  document.getElementById("typedTxt").innerText = textArr[i].substring(0,index++);
+  if(index > textArr[i].length){
+    index=0;
+    i=(i+1)%textArr.length;
+  }
+},120);
+
+/* COUNTERS */
+document.querySelectorAll('.counter-num').forEach(counter=>{
+  let target = +counter.dataset.target;
+  let count = 0;
+  let inc = target/80;
+  function update(){
+    count += inc;
+    if(count < target){
+      counter.innerText = Math.floor(count);
+      requestAnimationFrame(update);
+    } else counter.innerText = target;
+  }
+  update();
+});
+
+/* GALLERY DYNAMIC */
+const gallery = document.getElementById("galleryGrid");
+for(let i=1;i<=6;i++){
+  gallery.innerHTML += `<img src="assets/img/g${i}.jpg">`;
+}
+
+/* MODAL */
+const modal = document.getElementById("modalAdmission");
+document.getElementById("openAdmissionBtn").onclick = ()=>modal.style.display="flex";
+document.getElementById("closeModal").onclick = ()=>modal.style.display="none";
+
+/* GSAP ANIMATIONS */
+gsap.from(".hero-left", {opacity:0, x:-50, duration:1});
+gsap.from(".hero-card", {opacity:0, x:50, duration:1});
+gsap.utils.toArray(".section-title").forEach(el=>{
+  gsap.from(el, { 
+    scrollTrigger:{ trigger: el, start:"top 80%" }, 
+    opacity:0, y:40, duration:0.7 
+  });
+});
+</script>
+
+</body>
+</html>

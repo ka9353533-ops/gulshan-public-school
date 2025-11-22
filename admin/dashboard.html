@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Dashboard</title><link rel="stylesheet" href="../assets/css/style.css"></head><body>
+<div class="admin-top" style="background:linear-gradient(90deg,var(--green),var(--orange));padding:14px;color:#081014;display:flex;justify-content:space-between;align-items:center">
+  <div><strong>Gulshan Admin</strong></div>
+  <div>Welcome, <span id="adminName">Admin</span> <button onclick="logoutAdmin()" style="margin-left:12px;padding:6px 10px;border-radius:8px;border:0;background:#fff">Logout</button></div>
+</div>
+<div style="display:flex">
+  <aside style="width:240px;padding:18px;background:#07131a;border-right:1px solid rgba(255,255,255,0.03)">
+    <ul style="list-style:none;padding:0;color:rgba(255,255,255,0.9)">
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="students.html">Students</a></li>
+      <li><a href="teachers.html">Teachers</a></li>
+      <li><a href="fees.html">Fees</a></li>
+      <li><a href="attendance.html">Attendance</a></li>
+      <li><a href="notices-admin.html">Notices</a></li>
+      <li><a href="uploads.html">Gallery Uploads</a></li>
+    </ul>
+  </aside>
+  <main style="flex:1;padding:18px">
+    <h2>Dashboard</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:12px">
+      <div class="card"><div id="statStudents" style="font-size:22px">0</div><div style="font-size:12px;color:#9aa">Students</div></div>
+      <div class="card"><div id="statTeachers" style="font-size:22px">0</div><div style="font-size:12px;color:#9aa">Teachers</div></div>
+      <div class="card"><div id="statNotices" style="font-size:22px">0</div><div style="font-size:12px;color:#9aa">Notices</div></div>
+      <div class="card"><div id="statGallery" style="font-size:22px">0</div><div style="font-size:12px;color:#9aa">Gallery</div></div>
+    </div>
+    <div style="margin-top:20px"><h3>Quick Actions</h3><div style="display:flex;gap:8px;margin-top:8px"><button onclick="location.href='students.html'">Manage Students</button><button onclick="location.href='teachers.html'">Manage Teachers</button><button onclick="location.href='fees.html'">Fees</button><button onclick="location.href='attendance.html'">Attendance</button></div></div>
+  </main>
+</div>
+<script src="../assets/js/admin.js"></script>
+<script>document.addEventListener('DOMContentLoaded', ()=>{ adminInit && adminInit(); renderDashboardStats && renderDashboardStats(); });</script>
+</body></html>

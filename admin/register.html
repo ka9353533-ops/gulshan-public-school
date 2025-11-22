@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Register</title><link rel="stylesheet" href="../assets/css/style.css"></head><body>
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px">
+  <div style="background:#08141a;padding:22px;border-radius:12px;width:360px">
+    <h3>Create Admin Account</h3>
+    <input id="regName" placeholder="Full name" style="width:100%;padding:10px;margin:8px 0;border-radius:8px">
+    <input id="regEmail" placeholder="Email" style="width:100%;padding:10px;margin:8px 0;border-radius:8px">
+    <input id="regPass" placeholder="Password" type="password" style="width:100%;padding:10px;margin:8px 0;border-radius:8px">
+    <div style="display:flex;gap:8px"><button id="btnRegister" class="btn btn-primary">Register</button><a href="login.html" class="btn btn-ghost">Login</a></div>
+  </div>
+</div>
+<script src="../assets/js/admin.js"></script>
+<script>
+document.getElementById('btnRegister').addEventListener('click', function(){
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const pass = document.getElementById('regPass').value.trim();
+  const r = window.registerAdmin(name,email,pass);
+  if(r.ok){ alert('Registered. Please login.'); location.href='login.html'; } else alert(r.msg || 'Error');
+});
+</script>
+</body></html>

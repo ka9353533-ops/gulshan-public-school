@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Facilities — Gulshan Public School</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
+    }
+
+    :root {
+        --orange: #ff6a00;
+        --green: #39ff14;
+        --white: #ffffff;
+    }
+
+    /* Header */
+    .header {
+        padding: 18px 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .header a {
+        color: white;
+        margin-left: 18px;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .cta {
+        background: var(--orange);
+        padding: 8px 16px;
+        border-radius: 8px;
+        color: #000 !important;
+        font-weight: 700;
+        box-shadow: 0 0 15px var(--orange);
+    }
+
+    /* Hero */
+    .hero {
+        text-align: center;
+        padding: 70px 10%;
+        background: radial-gradient(circle, rgba(255,100,0,0.15), transparent);
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        font-weight: 800;
+        color: var(--orange);
+        text-shadow: 0 0 20px var(--orange);
+    }
+
+    .hero p {
+        max-width: 700px;
+        margin: auto;
+        opacity: 0.7;
+        font-size: 17px;
+    }
+
+    /* Section Title */
+    .title {
+        font-size: 36px;
+        margin-top: 40px;
+        text-align: center;
+        color: var(--green);
+        text-shadow: 0 0 20px var(--green);
+    }
+
+    .sub {
+        text-align: center;
+        font-size: 14px;
+        opacity: 0.7;
+        margin-bottom: 30px;
+    }
+
+    /* Facilities Grid */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+        gap: 25px;
+        padding: 0 10% 40px;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 22px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255, 102, 0, 0.25);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 0 30px var(--orange);
+    }
+
+    .card h3 {
+        color: var(--orange);
+        margin-bottom: 6px;
+        font-size: 22px;
+        text-shadow: 0 0 10px var(--orange);
+    }
+
+    .card p {
+        opacity: 0.7;
+        font-size: 14px;
+    }
+
+    footer {
+        margin-top: 40px;
+        padding: 20px;
+        text-align: center;
+        opacity: 0.7;
+        font-size: 14px;
+    }
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div style="font-weight:800;font-size:22px;color:var(--orange)">GPS</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="facilities.html">Facilities</a>
+        <a href="notices.html">Notices</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="contact.html">Contact</a>
+        <a class="cta" href="admin/login.html">Admin</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Our Facilities</h1>
+    <p>
+        Gulshan Public School छात्रों को सुरक्षित, आधुनिक और प्रेरणादायक माहौल प्रदान करता है—
+        जहाँ शिक्षा, अनुशासन और तकनीक साथ-साथ चलते हैं।
+    </p>
+</section>
+
+<h2 class="title">Premium Facilities</h2>
+<div class="sub">Modern • Safe • Technology Enabled</div>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>📚 Smart Classrooms</h3>
+        <p>Digital smart boards, audio-visual learning, modern furniture.</p>
+    </div>
+
+    <div class="card">
+        <h3>💻 Computer Lab</h3>
+        <p>High-speed computers with modern software for student training.</p>
+    </div>
+
+    <div class="card">
+        <h3>🎨 Activity Room</h3>
+        <p>Arts, Crafts, Dance & Music space for creativity.</p>
+    </div>
+
+    <div class="card">
+        <h3>🏃 Sports Training</h3>
+        <p>Indoor + outdoor games: Football, Cricket, Volleyball & more.</p>
+    </div>
+
+    <div class="card">
+        <h3>📖 Library</h3>
+        <p>Storybooks, knowledge books, magazines & digital resources.</p>
+    </div>
+
+    <div class="card">
+        <h3>🧪 Science Lab</h3>
+        <p>Chemistry, Physics & Biology practical labs with certified safety.</p>
+    </div>
+
+    <div class="card">
+        <h3>🛡 Safe Campus</h3>
+        <p>CCTV monitoring, proper security system, safe environment.</p>
+    </div>
+
+    <div class="card">
+        <h3>🚌 Transport Facility</h3>
+        <p>Comfortable buses with GPS tracking and trained drivers.</p>
+    </div>
+
+</div>
+
+<footer>
+    © 2025 Gulshan Public School — Designed by Kabeer Ali
+</footer>
+
+<script>
+    gsap.from(".hero h1", {opacity: 0, y: -40, duration: 1});
+    gsap.from(".hero p", {opacity: 0, y: 40, duration: 1, delay: 0.3});
+
+    gsap.utils.toArray(".card").forEach((box) => {
+        gsap.from(box, {
+            scrollTrigger: { trigger: box, start: "top 90%" },
+            opacity: 0,
+            y: 60,
+            duration: 0.7
+        });
+    });
+
+    gsap.from(".title", {
+        scrollTrigger: { trigger: ".title", start: "top 85%" },
+        opacity: 0,
+        y: -40,
+        duration: 1
+    });
+</script>
+
+</body>
+</html>

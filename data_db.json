@@ -1,0 +1,37 @@
+{
+  "students": [
+    {
+      "id": "stu_1",
+      "name": "Aman",
+      "class": "5",
+      "phone": "987650001"
+    },
+    {
+      "id": "stu_2",
+      "name": "Sana",
+      "class": "6",
+      "phone": "987650002"
+    }
+  ],
+  "teachers": [
+    {
+      "id": "t_1",
+      "name": "Mr. Kumar",
+      "subject": "Math"
+    },
+    {
+      "id": "t_2",
+      "name": "Ms. Fatima",
+      "subject": "Science"
+    }
+  ],
+  "notices": [
+    {
+      "id": "n_1",
+      "title": "Admission Open",
+      "msg": "Admission open for session 2026",
+      "date": "2025-11-22"
+    }
+  ],
+  "gallery": []
+}

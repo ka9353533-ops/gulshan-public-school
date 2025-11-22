@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Uploads</title><link rel='stylesheet' href='../assets/css/style.css'></head><body>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:linear-gradient(90deg,var(--green),var(--orange));color:#081014"><div><strong>Admin</strong></div><div><button onclick="logoutAdmin()" style="background:#fff;padding:6px;border-radius:6px">Logout</button></div></div>
+<div style="display:flex"><aside style="width:240px;padding:18px;background:#07131a;color:rgba(255,255,255,0.9)"><ul style="list-style:none;padding:0"><li><a href="dashboard.html">Dashboard</a></li><li><a href="uploads.html"><strong>Uploads</strong></a></li></ul></aside>
+<main style="flex:1;padding:18px"><h2>Gallery Uploads</h2><div style="margin-top:8px"><input type="file" id="galleryUpload"></div><div id="galleryGridAdmin" style="display:flex;flex-wrap:wrap;margin-top:12px"></div></main></div>
+<script src="../assets/js/admin.js"></script>
+<script>
+document.getElementById('galleryUpload').addEventListener('change', function(e){
+  const f = e.target.files[0]; if(!f) return;
+  uploadImage(f, function(){ renderGalleryAdmin(); renderPublicGallery(); });
+});
+document.addEventListener('DOMContentLoaded', ()=>{ adminInit(); renderGalleryAdmin(); renderDashboardStats(); });
+</script>
+</body></html>

@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Login</title><link rel="stylesheet" href="../assets/css/style.css"></head><body>
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px">
+  <div style="background:#08141a;padding:22px;border-radius:12px;width:360px">
+    <h3>Admin Login</h3>
+    <input id="loginEmail" placeholder="Email" style="width:100%;padding:10px;margin:8px 0;border-radius:8px">
+    <input id="loginPass" placeholder="Password" type="password" style="width:100%;padding:10px;margin:8px 0;border-radius:8px">
+    <div style="display:flex;gap:8px"><button id="btnLogin" class="btn btn-primary">Login</button><a href="register.html" class="btn btn-ghost">Register</a></div>
+  </div>
+</div>
+<script src="../assets/js/admin.js"></script>
+<script>
+document.getElementById('btnLogin').addEventListener('click', function(){
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value.trim();
+  const res = window.loginAdmin(email, pass);
+  if(res.ok){ location.href = 'dashboard.html'; } else { alert('Invalid credentials or no account'); }
+});
+</script>
+</body></html>

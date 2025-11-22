@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Testimonials — Gulshan Public School</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+    }
+
+    :root {
+        --orange: #ff6a00;
+        --green: #39ff14;
+        --white: #ffffff;
+    }
+
+    /* Header */
+    .header {
+        padding: 18px 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(6px);
+    }
+
+    .header a {
+        color: white;
+        margin-left: 18px;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .cta {
+        background: var(--green);
+        padding: 8px 16px;
+        border-radius: 8px;
+        color: #000 !important;
+        font-weight: 700;
+        box-shadow: 0 0 15px var(--green);
+    }
+
+    /* Hero */
+    .hero {
+        text-align: center;
+        padding: 70px 10%;
+        background: radial-gradient(circle, rgba(255,100,0,0.2), transparent);
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        font-weight: 800;
+        color: var(--orange);
+        text-shadow: 0 0 20px var(--orange);
+    }
+
+    /* Testimonials Grid */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+        gap: 25px;
+        padding: 40px 10%;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-left: 3px solid var(--orange);
+        backdrop-filter: blur(4px);
+        padding: 20px;
+        border-radius: 12px;
+        transition: 0.3s;
+        box-shadow: 0 0 15px rgba(255,100,0,0.2);
+    }
+
+    .card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 0 30px var(--orange);
+    }
+
+    .name {
+        font-weight: 700;
+        font-size: 18px;
+        margin-top: 12px;
+        color: var(--green);
+        text-shadow: 0 0 10px var(--green);
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        opacity: 0.8;
+        margin-top: 20px;
+    }
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div style="font-weight:800;font-size:22px;color:var(--orange)">GPS</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="facilities.html">Facilities</a>
+        <a href="notices.html">Notices</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="contact.html">Contact</a>
+        <a class="cta" href="admin/login.html">Admin</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>What People Say About Us</h1>
+    <p style="opacity:0.7;max-width:700px;margin:auto">
+        Students, Parents और Teachers की सच्ची राय — हमारे स्कूल की गुणवत्ता को दर्शाती है।
+    </p>
+</section>
+
+<h2 style="text-align:center;font-size:36px;color:var(--green);text-shadow:0 0 20px var(--green)">
+    Testimonials
+</h2>
+
+<div id="testimonialsGrid" class="grid"></div>
+
+<footer>
+    © 2025 Gulshan Public School — Designed by Kabeer Ali
+</footer>
+
+<script>
+/* --------------------------
+   LOAD TESTIMONIALS FROM localStorage
+--------------------------- */
+let defaultTestimonials = [
+    { text: "Teachers are very supportive and friendly.", name: "Asha (Student)" },
+    { text: "My child improved a lot academically.", name: "Mr. Sharma (Parent)" },
+    { text: "Best environment for overall growth.", name: "Neha (Student)" }
+];
+
+if (!localStorage.getItem("gps_testimonials")) {
+    localStorage.setItem("gps_testimonials", JSON.stringify(defaultTestimonials));
+}
+
+function renderTestimonials() {
+    let data = JSON.parse(localStorage.getItem("gps_testimonials"));
+    let grid = document.getElementById("testimonialsGrid");
+    grid.innerHTML = "";
+
+    data.forEach((t, i) => {
+        grid.innerHTML += `
+            <div class="card">
+                <p>"${t.text}"</p>
+                <div class="name">— ${t.name}</div>
+            </div>
+        `;
+    });
+
+    gsap.utils.toArray(".card").forEach((box) => {
+        gsap.from(box, {
+            scrollTrigger: { trigger: box, start: "top 85%" },
+            opacity: 0,
+            y: 60,
+            duration: 0.7
+        });
+    });
+}
+
+renderTestimonials();
+</script>
+
+</body>
+</html>

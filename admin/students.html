@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Manage Students</title><link rel="stylesheet" href="../assets/css/style.css"></head><body>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:linear-gradient(90deg,var(--green),var(--orange));color:#081014"><div><strong>Admin</strong></div><div><button onclick="logoutAdmin()" style="background:#fff;padding:6px;border-radius:6px">Logout</button></div></div>
+<div style="display:flex">
+  <aside style="width:240px;padding:18px;background:#07131a;color:rgba(255,255,255,0.9)"><ul style="list-style:none;padding:0"><li><a href="dashboard.html">Dashboard</a></li><li><a href="students.html"><strong>Students</strong></a></li><li><a href="teachers.html">Teachers</a></li></ul></aside>
+  <main style="flex:1;padding:18px">
+    <h2>Students</h2>
+    <div style="display:flex;justify-content:space-between;align-items:center"><div></div><div><button onclick="openAddStudent()">+ Add Student</button></div></div>
+    <table class="table" id="studentsTable" style="margin-top:12px"><thead><tr><th>Photo</th><th>Name</th><th>Class</th><th>Phone</th><th>Actions</th></tr></thead><tbody></tbody></table>
+  </main>
+</div>
+<div id="modal" class="modal"><div class="modal-card" id="modalCard"></div></div>
+<script src="../assets/js/admin.js"></script>
+<script>
+function openAddStudent(){
+  document.getElementById('modalCard').innerHTML = `<h3>Add Student</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><input id="s_name" placeholder="Name"><input id="s_class" placeholder="Class"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px"><input id="s_phone" placeholder="Phone"><input id="s_photo" type="file"></div><div style="text-align:right;margin-top:8px"><button onclick="saveStudentModal()">Save</button></div>`;
+  document.getElementById('modal').classList.add('open');
+}
+function saveStudentModal(){
+  const name=document.getElementById('s_name').value.trim(); const cls=document.getElementById('s_class').value.trim(); const phone=document.getElementById('s_phone').value.trim(); const file=document.getElementById('s_photo').files[0];
+  if(!name){ alert('Name required'); return; }
+  if(file){ const fr=new FileReader(); fr.onload=function(){ window.addStudent({name, class:cls, phone, photo:fr.result}); document.getElementById('modal').classList.remove('open'); }; fr.readAsDataURL(file); }
+  else{ window.addStudent({name, class:cls, phone, photo:''}); document.getElementById('modal').classList.remove('open'); }
+}
+document.addEventListener('DOMContentLoaded', ()=>{ adminInit && adminInit(); renderStudents && renderStudents(); renderDashboardStats && renderDashboardStats(); });
+</script>
+</body></html>
